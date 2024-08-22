@@ -11,6 +11,7 @@ html {
 
 .list {
     background-color: #e0e1dd;
+    padding: 1.5rem;
 }
 
 .list__header {
@@ -21,14 +22,16 @@ html {
 }
 
 .list__container {
+    /* width: 100%; */
     display: flex;
-    flex-direction: column;
-    width: 100%;
+    justify-content: space-between;
     align-items: center;
 }
 
 .list__add {
     display: flex;
+    /* width: 100%; */
+    justify-content: center;
 }
 
 .list__add input {
@@ -55,5 +58,50 @@ html {
 }
 
 button:hover {
+    cursor: pointer;
+}
+hr {
+    width: 100%;
+    border: none; /* Remove the default border */
+    border-top: 1px solid #ccc; /* Set the line's color and thickness */
+    margin: 20px 0; /* Add margins above and below the line */
+  }
+.list__table{
+    /* background-color: #415a7798; */
+    min-height: 55rem;
+    /* padding: 2rem; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 1rem;
+}
+.list__element{
+    background-color: #415a77;
+    color: white;
+    font-size: 2rem;
+    width: 30.332%;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 2rem;
+    border-radius: 1rem;
+}
+.list__element p,i{
+    padding: 1rem;
+    margin: 0;
+}
+.list__element__actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    overflow: hidden;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color: #5d7794;
+}
+.list__element__actions i:hover{
+    background-color: #43576e;
+    border-radius: 2rem;
     cursor: pointer;
 }

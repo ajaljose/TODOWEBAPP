@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Licorice&display=swap');
+
+html {
+    font-size: 62.5%;
+    font-family: "Teko", sans-serif;
+    font-weight: normal;
+    color: #0d1b2a;
+
+}
+
+.list {
+    background-color: #e0e1dd;
+}
+
+.list__header {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 5rem;
+    margin: 0;
+}
+
+.list__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.list__add {
+    display: flex;
+}
+
+.list__add input {
+    border: none;
+    background-color: #778da971;
+    height: 4rem;
+    padding: 0 1.5rem;
+    border-top-left-radius: 1.5rem;
+    width: 30rem;
+    border-bottom-left-radius: 1.5rem;
+}
+
+.list__add button {
+    border: none;
+    background-color: #778da9;
+    height: 4rem;
+    padding: 0 1.5rem;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    font-weight: 700;
+    font-family: "Teko", sans-serif;
+    font-size: 2rem;
+
+}
+
+button:hover {
+    cursor: pointer;
+}

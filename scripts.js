@@ -52,16 +52,13 @@ addButton.addEventListener("click", function () {
       todoList.length > 0 ? todoList.length : 0
     })"></i>`;
     newDiv.appendChild(actionsDiv);
-    // Add a transition class to the new div
     newDiv.classList.add("fade-in");
     parentDiv.prepend(newDiv);
 
     todoList.push(inputTask.value);
-    // todoList.unshift(newTask);
     localStorage.setItem("todoList", JSON.stringify(todoList));
     inputTask.value = "";
     setTimeout(function () {
-      // Code to execute after 1 second
       newDiv.classList.add("active");
     }, 200);
   }
@@ -86,12 +83,10 @@ function restoreExistingList() {
       : "list__element__actions";
     actionsDiv.innerHTML = `<i class="fa-solid fa-check" onclick="markAsCompleted(${index},event)"></i><i class="fa-solid fa-pen-to-square" onclick="editTask(${index})"></i><i class="fa-solid fa-trash"  onclick="removeTask(${index})"></i>`;
     newDiv.appendChild(actionsDiv);
-    //   newDiv.classList.add("fade-in");
     parentDiv.prepend(newDiv);
   });
 }
 function removeTask(index) {
-  // alert("sd"+index);
   let todoList = JSON.parse(localStorage.getItem("todoList"));
   const completeList = JSON.parse(localStorage.getItem("completeList")) || [];
   todoList.splice(index, 1);
@@ -128,10 +123,8 @@ function markAsCompleted(index, event) {
   console.log(event);
   const parentElement = event.target.parentElement;
   parentElement.classList.add("complete-light");
-  // Get the grandparent element
   const grandparentElement = parentElement.parentElement;
 
-  // Add the "complete" class to the grandparent
   grandparentElement.classList.add("complete");
   const completeList = JSON.parse(localStorage.getItem("completeList")) || [];
   !completeList.includes(index) ? completeList.push(index) : "";

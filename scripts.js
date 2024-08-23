@@ -1,19 +1,24 @@
-const addButton = document.getElementById("btn__add");
+const addButton = document.getElementById("btn__add"); //decalred globally because we can reuse in different components
 const parentDiv = document.getElementById("todoList");
 const inputTask = document.getElementById("input__task");
-let editFlag = false;
-let editIndex = "";
+
+let editFlag = false; //when a edit button of task is clicked it will be set to true.
+let editIndex = ""; // when a edit button of task is clicked it index of the task in todoList will be set in editIndex
+
 addButton.addEventListener("click", function () {
+  // add button click listener
   let todoList = JSON.parse(localStorage.getItem("todoList")) || [];
   const completeList = JSON.parse(localStorage.getItem("completeList")) || [];
   if (completeList.length == 0)
     localStorage.setItem("completeList", JSON.stringify(completeList));
   if (editFlag) {
-    if(todoList[editIndex]==inputTask.value){
-        editFlag = false;
-    editIndex = "";
-    inputTask.value = "";
-        return;
+    //when edited value is saved it will check if there is any change if no change input box will be set to empty and nothing else will be done
+    //if value is edited/updated the new entry will be pushed to todoList array and removes old entry and if it was marked completed it will be reset. 
+    if (todoList[editIndex] == inputTask.value) {
+      editFlag = false;
+      editIndex = "";
+      inputTask.value = "";
+      return;
     }
     todoList.push(inputTask.value);
     localStorage.setItem("todoList", JSON.stringify(todoList));
@@ -27,6 +32,7 @@ addButton.addEventListener("click", function () {
     editIndex = "";
     inputTask.value = "";
   } else {
+    // new task will be create and saved into localstorage and ui will be updated
     const newTask = inputTask.value.trim();
 
     if (newTask === "") {
@@ -63,7 +69,9 @@ addButton.addEventListener("click", function () {
     }, 200);
   }
 });
-function restoreExistingList() {
+
+
+function restoreExistingList() {// this is a function to read the todoList from localStorage and restore the previoulsy saved todo list
   const todoList = JSON.parse(localStorage.getItem("todoList")) || [];
   const completeList = JSON.parse(localStorage.getItem("completeList")) || [];
   todoList.forEach((task, index) => {
@@ -86,39 +94,48 @@ function restoreExistingList() {
     parentDiv.prepend(newDiv);
   });
 }
-function removeTask(index) {
+
+
+
+function removeTask(index) { //to remove a existing task and update ui
   let todoList = JSON.parse(localStorage.getItem("todoList"));
   const completeList = JSON.parse(localStorage.getItem("completeList")) || [];
   todoList.splice(index, 1);
   localStorage.setItem("todoList", JSON.stringify(todoList));
- 
+
   let indOfComplete = completeList.indexOf(index);
   if (indOfComplete > -1) {
-    completeList.splice(indOfComplete, 1);    
-}
-for(let i=0;i<completeList.length;i++){
-    if(completeList[i]>index){
-        completeList[i]=completeList[i]-1;
+    completeList.splice(indOfComplete, 1);
+  }
+  for (let i = 0; i < completeList.length; i++) {
+    if (completeList[i] > index) {
+      completeList[i] = completeList[i] - 1;
     }
-}
-localStorage.setItem("completeList", JSON.stringify(completeList));
+  }
+  localStorage.setItem("completeList", JSON.stringify(completeList));
   while (parentDiv.firstChild) {
     parentDiv.removeChild(parentDiv.firstChild);
   }
   restoreExistingList();
 }
-function editTask(index) {
+
+
+function editTask(index) { 
   let todoList = JSON.parse(localStorage.getItem("todoList"));
   inputTask.value = todoList[index];
   editFlag = true;
   editIndex = index;
 }
+
+
 function taskOnChange() {
   if (inputTask.value == "") {
     editFlag = false;
     editIndex = "";
   }
 }
+
+
 function markAsCompleted(index, event) {
   console.log(event);
   const parentElement = event.target.parentElement;

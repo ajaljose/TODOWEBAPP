@@ -129,6 +129,8 @@ function editTask(index) {
 
 
 function taskOnChange() {
+  // this is to handle an edit case. the case is when you click and edit and
+  // removes the text from input box if the user removes all character of edit then editflag and editIndex will be reset.
   if (inputTask.value == "") {
     editFlag = false;
     editIndex = "";

@@ -50,11 +50,11 @@ addButton.addEventListener("click", function () {
 
     const actionsDiv = document.createElement("div");
     actionsDiv.className = "list__element__actions";
-    actionsDiv.innerHTML = `<i class="fa-solid fa-check"onclick="markAsCompleted(${
+    actionsDiv.innerHTML = `<i title="Mark As Completed"class="fa-solid fa-check"onclick="markAsCompleted(${
       todoList.length > 0 ? todoList.length : 0
-    },event)"></i><i class="fa-solid fa-pen-to-square" onclick="editTask(${
+    },event)"></i><i title="Edit Task"class="fa-solid fa-pen-to-square" onclick="editTask(${
       todoList.length > 0 ? todoList.length : 0
-    })"></i><i class="fa-solid fa-trash"  onclick="removeTask(${
+    })"></i><i title="Delete Task"class="fa-solid fa-trash"  onclick="removeTask(${
       todoList.length > 0 ? todoList.length : 0
     })"></i>`;
     newDiv.appendChild(actionsDiv);
@@ -89,7 +89,7 @@ function restoreExistingList() {// this is a function to read the todoList from 
     actionsDiv.className = completeList.includes(index)
       ? "list__element__actions complete-light"
       : "list__element__actions";
-    actionsDiv.innerHTML = `<i class="fa-solid fa-check" onclick="markAsCompleted(${index},event)"></i><i class="fa-solid fa-pen-to-square" onclick="editTask(${index})"></i><i class="fa-solid fa-trash"  onclick="removeTask(${index})"></i>`;
+    actionsDiv.innerHTML = `<i title="Mark As Completed"class="fa-solid fa-check" onclick="markAsCompleted(${index},event)"></i><i title="Edit Task"class="fa-solid fa-pen-to-square" onclick="editTask(${index})"></i><i title="Delete Task"class="fa-solid fa-trash"  onclick="removeTask(${index})"></i>`;
     newDiv.appendChild(actionsDiv);
     parentDiv.prepend(newDiv);
   });

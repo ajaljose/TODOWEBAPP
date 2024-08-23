@@ -1,5 +1,9 @@
 This repository contains a basic to-do list application built using HTML, CSS, and JavaScript.
 [![Screenshot of the to-do list application]](screenshot.png)
+
+Visit the live link to view todolist deployed in github
+Live Link: https://ajaljose.github.io/TODOWEBAPP/
+
 Getting Started
 1.Clone the Repository:
 git clone https://github.com/ajaljose/TODOWEBAPP.git
